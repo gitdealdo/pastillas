@@ -22,7 +22,7 @@
   </head>
   <body>
     <!-- <div id="deviceready" class="blink"> -->
-      <div data-role="page" data-theme="d" id="home">
+      <div data-role="page" data-theme="a" id="home">
         <div data-role="header" style="overflow:hidden;" data-position="fixed">
           <h1 class="title-header">jornada de fe</h1>
           <a href="#lpanel" data-icon="bars" data-iconpos="notext">Menu</a>
@@ -52,32 +52,54 @@
           </ul>
         </div><!-- /panel -->
         <div data-role="panel" id="rpanel" data-display="overlay" data-position="right">
-          <button class="ui-btn ui-corner-all" style="position: absolute;top: 90%;width: 90%;" onclick="cargar_datos()">Reset data</button>
+          <a href="#popupCloseRight" data-rel="popup" class="ui-btn ui-corner-all">Reset data</a>
+          <div data-role="popup" id="popupCloseRight" class="ui-content" style="max-width:280px">
+              <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <p>Los datos serán reseteados.</p>
+            <button class="ui-btn ui-corner-all" onclick="cargar_datos()">Continuar</button>
+          </div>
         </div><!-- /panel -->
-        <div role="main" class="ui-content" id="main">
-          <h1 class="titulo">Pastillas del colportor</h1>
-          <p class="vers">Sí estás pasando por algún problema, una situación complicada, preocupado por una prueba, estás angustiado, pasando tiempos difíciles, te dejamos estos pasajes de la Palabra de Dios..</p>
-          <p class="caption">Colportor</p>
+        <div role="main" class="ui-content transbox" id="main">
+          <h2 class="titulo">Pastillas del colportor</h2>
+          <p class="vers">Si hay una obra más importante que otra, es la de presentar al público nuestras publicaciones, induciéndolo así a escudriñar las Escrituras. La obra misionera que consiste en introducir nuestras publicaciones en el seno de las familias, conversar y orar con ellas-, es una obra buena que instruirá a los hombres y mujeres acerca de cómo realizar la labor pastoral.</p>
+          <p class="caption">Testimonies , tomo 4, pág. 390. Año 1880</p>
         </div>
         <div data-role="footer" style="overflow:hidden;" data-position="fixed">
           <div data-role="navbar">
               <ul>
-                  <!-- <li><a href="#" data-icon="edit"></a></li> -->
                   <li><a href="#" onclick="refresh()" data-icon="refresh"></a></li>
                   <li><a href="#" onclick="info()" data-icon="info"></a></li>
+                  <li><a href="#popupMenu" data-icon="bars" data-rel="popup" data-transition="slideup"></a></li>
               </ul>
           </div><!-- /navbar -->
+          <div data-role="popup" id="popupMenu">
+            <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                <li><a href="#" onclick="cambiar('a')">Tema a</a></li>
+                <li><a href="#" onclick="cambiar('b')">Tema b</a></li>
+                <li><a href="#" onclick="cambiar('c')">Tema c</a></li>
+                <li><a href="#" onclick="cambiar('d')">Tema d</a></li>
+            </ul>
+          </div>
         </div><!-- /footer --> 
       </div>  
       <!--//////////////////// page ///////////////////// -->
-      <div data-role="page" id="vers" data-theme="d">
+      <div data-role="page" id="vers" data-theme="a">
         <div data-role="header" style="overflow:hidden;" data-position="fixed">
           <h1 class="title-header">Jornada de fe</h1>
           <a href="#home" data-transition="flip" data-icon="home" data-iconpos="notext">Home</a>
+          <a href="#popupMenu2" data-transition="slidedown" data-rel="popup" data-icon="bars" data-iconpos="notext">Home</a>
+          <div data-role="popup" id="popupMenu2">
+            <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                <li><a href="#" onclick="cambiar('a')">Tema a</a></li>
+                <li><a href="#" onclick="cambiar('b')">Tema b</a></li>
+                <li><a href="#" onclick="cambiar('c')">Tema c</a></li>
+                <li><a href="#" onclick="cambiar('d')">Tema d</a></li>
+            </ul>
+          </div>
         </div><!-- /header -->
-        <div data-role="main" class="ui-content" id="principal"></div>
+        <div data-role="main" class="ui-content transbox" id="principal"></div>
         <div data-role="footer" style="overflow:hidden;" data-position="fixed">
-          <h1>By Happy-Soft dedicated for Roxi</h1>
+          <h1>Dedicated to Roxi</h1>
         </div><!-- /footer --> 
       </div>  
     <!-- </div> -->

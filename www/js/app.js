@@ -37,26 +37,27 @@ var razones = [
   {id:6,titulo:"Importancia del Colportage",contenido:"La importancia de esta obra (colportaje) se equipara plenamente a la del ministerio. El predicador vivo y el mensajero silencioso se necesitan por igual para la realización de la gran tarea que afrontamos.",basado:"Review and Herald , 1-4-1880"},
 ];
 
-
 function cargar_datos(){
   localStorage.setItem('vers', JSON.stringify(vers));
   console.log("Datos cargados");
 }
 
+var theme = '';
 var versiculo;
 function buscar(arg) {
   // console.log(arg);
-  var vers = JSON.parse(localStorage.getItem("vers"));
+  // vers = JSON.parse(localStorage.getItem("vers"));
   for (var i = 0; i < vers.length; i++) {
     if (vers[i].id===arg) {
       versiculo = vers[i];
     }
   }
   var html = '';
-  html += '<h1 class="titulo">'+versiculo.titulo+'</h1>';
+  html += '<h2 class="titulo">'+versiculo.titulo+'</h2>';
   html += '<p class="vers">"'+versiculo.contenido+'"</p>';
-  html += '<h2 class="titulo">'+versiculo.versiculo+'</h2>';
+  html += '<h3 class="titulo">'+versiculo.versiculo+'</h3>';
   $("#principal").html(html);
+  cambiar(theme);
 }
 
 function info () {
@@ -85,19 +86,37 @@ function info () {
 function refresh() {
   var vers = JSON.parse(localStorage.getItem("vers"));
   var arg = Math.floor((Math.random() * vers.length) + 1); 
-  console.log(arg);
+  // console.log(arg);
   for (var i = 0; i < vers.length; i++) {
     if (vers[i].id===arg) {
       versiculo = vers[i];
     }
   }
   var html = '';
-  html += '<h1 class="titulo">'+versiculo.titulo+'</h1>';
+  html += '<h2 class="titulo">'+versiculo.titulo+'</h2>';
   html += '<p class="vers">"'+versiculo.contenido+'"</p>';
-  html += '<h2 class="titulo">'+versiculo.versiculo+'</h2>';
+  html += '<h3 class="titulo">'+versiculo.versiculo+'</h3>';
   $("#main").html(html);
 }
 
 function limpiar() {
     localStorage.clear();
+}
+function cambiar(arg) {
+  // var theme = $(this).text();
+  theme = arg;
+  $.mobile.activePage.find('.ui-btn')
+                     .removeClass('ui-btn-up-a ui-btn-up-b ui-btn-up-c ui-btn-up-d ui-btn-up-e ui-btn-hover-a ui-btn-hover-b ui-btn-hover-c ui-btn-hover-d ui-btn-hover-e')
+                     .addClass('ui-btn-up-' + theme)
+                     .attr('data-theme', theme);
+  $.mobile.activePage.find('.ui-header, .ui-footer')
+                     .removeClass('ui-bar-a ui-bar-b ui-bar-c ui-bar-d ui-bar-e')
+                     .addClass('ui-bar-' + theme)
+                     .attr('data-theme', theme);
+  $.mobile.activePage.removeClass('ui-body-a ui-body-b ui-body-c ui-body-d ui-body-e')
+                     .addClass('ui-body-' + theme)
+                     .attr('data-theme', theme);
+  // $('a').bind('click', function (event) {
+  //     event.preventDefault();
+  // });
 }
