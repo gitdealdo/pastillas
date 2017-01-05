@@ -19,6 +19,24 @@ var vers = [
 	{id:18,'versiculo':'Romanos 12:21','titulo':'Vence el mal con el bien.','contenido':'No te dejes vencer por el mal; al contrario, vence el mal con el bien.'},
 	{id:19,'versiculo':'1 Juan 5:4','titulo':'Vence al mundo','contenido':'No te dejes vencer por el mal; al contrario, vence el mal con el bien.'},
 ];
+  
+var razones = [
+  {id:1,titulo:"Después de recibir una visión, Elena de White dijo a Jaime White",contenido:"Tengo un mensaje para ti. Has de comenzar a imprimir un pequeño periódico y enviarlo a la gente. Será pequeño al comienzo; pero a medida que la gente lea, te enviará medios con los cuales imprimir; y será un éxito desde el mismo principio. Se me ha mostrado que desde este pequeño comienzo saldrán rayos de luz que han de circuir el globo",basado:"Life Sketches , pág. 125. Año 1915"},
+  {id:2,titulo:"Importancia del Colportage",contenido:"La obra con nuestros libros debe constituir el medio de dar rápidamente la sagrada luz de la verdad presente al mundo.",basado:"Testimonies , tomo 9, págs. 69, 70. Año 1909"},
+  {id:3,titulo:'Razones para colportar', contenido:[
+    'Presentar en forma clara, sencilla y simple la base espiritual de nuestra fe.',
+    'Fortalecer nuestra fe.',
+    'Preparar a un Pueblo para ir al encuentro de Dios.',
+    'Preparar el camino para la Segunda Venida de Jesús.',
+    'Iluminar la tierra con su gloria.',
+    'Proclamar el mensaje del tercer ángel.',
+    'Llevar el mensaje a lugares que solo pueden ser alcanzados únicamente por nuestras publicaciones.',
+  ],basado:"IDEC"},
+  {id:4,titulo:"Importancia del Colportage",contenido:"Si hay una obra más importante que otra, es la de presentar al público nuestras publicaciones, induciéndolo así a escudriñar las Escrituras. La obra misionera que consiste en introducir nuestras publicaciones en el seno de las familias, conversar y orar con ellas-, es una obra buena que instruirá a los hombres y mujeres acerca de cómo realizar la labor pastoral",basado:"Testimonies , tomo 4, pág. 390. Año 1880"},
+  {id:5,titulo:"Importancia del Colportage",contenido:"Es también, en gran medida, por medio de nuestras Imprentas como debe cumplirse la obra de aquel otro ángel que baja del cielo con gran potencia y alumbra la tierra con su gloria.",basado:"Joyas de los Testimonios , tomo 3, págs. 140, 142. Año 1902"},
+  {id:6,titulo:"Importancia del Colportage",contenido:"La importancia de esta obra (colportaje) se equipara plenamente a la del ministerio. El predicador vivo y el mensajero silencioso se necesitan por igual para la realización de la gran tarea que afrontamos.",basado:"Review and Herald , 1-4-1880"},
+];
+
 
 function cargar_datos(){
   localStorage.setItem('vers', JSON.stringify(vers));
@@ -40,31 +58,44 @@ function buscar(arg) {
   html += '<h2 class="titulo">'+versiculo.versiculo+'</h2>';
   $("#principal").html(html);
 }
-// function leer_archivo() {
-// 	var vers = JSON.parse(localStorage.getItem("vers"));
-// 	for (var i = 0; i < vers.length; i++) {
-		
-// 		console.log('<li><a onclick="buscar('+vers[i].id+')" href="#vers" data-transition="turn">'+vers[i].titulo+'</a></li>');
-// 	}
-// }
 
-function guardar() {
-  // console.log(lecc);
-  for (var i = 0; i < lecc.preguntas.length; i++) {
-    // console.log($("#textinput-"+i).val());
-    lecc.preguntas[i].rpta = $("#textinput-"+i).val();
-  }
-  for (var i = 0; i < lecc.compromisos.length; i++) {
-    // if ($('#checkbox-'+i+'').is(':checked')) {};
-    lecc.compromisos[i].acepta = $('#checkbox-'+i).is(':checked');
-  }
-  var lafe = JSON.parse(localStorage.getItem("lafe"));
-  for (var i = 0; i < lafe.length; i++) {
-    if (lafe[i].id==lecc.id) {
-      lafe[i]=lecc;
+function info () {
+  var razon;
+  var arg = Math.floor((Math.random() * razones.length) + 1);
+  for (var i = 0; i < razones.length; i++) {
+    if (razones[i].id===arg) {
+      razon = razones[i];
     }
   }
-  localStorage.setItem('lafe', JSON.stringify(lafe));
+  var html = '';
+  html += '<h2 class="titulo">'+razon.titulo+'</h1>';
+  if (Array.isArray(razon.contenido)) {
+    html += '<ol>';
+    for (var i = razon.contenido.length - 1; i >= 0; i--) {
+      html += '<li>'+razon.contenido[i]+'</li>';
+    }
+    html += '</ol>';
+  }else {
+    html += '<p class="vers">"'+razon.contenido+'"</p>';
+  }
+  html += '<p class="caption">('+razon.basado+')</caption>';
+  $("#main").html(html);
+}
+
+function refresh() {
+  var vers = JSON.parse(localStorage.getItem("vers"));
+  var arg = Math.floor((Math.random() * vers.length) + 1); 
+  console.log(arg);
+  for (var i = 0; i < vers.length; i++) {
+    if (vers[i].id===arg) {
+      versiculo = vers[i];
+    }
+  }
+  var html = '';
+  html += '<h1 class="titulo">'+versiculo.titulo+'</h1>';
+  html += '<p class="vers">"'+versiculo.contenido+'"</p>';
+  html += '<h2 class="titulo">'+versiculo.versiculo+'</h2>';
+  $("#main").html(html);
 }
 
 function limpiar() {

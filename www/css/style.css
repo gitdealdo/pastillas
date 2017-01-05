@@ -7,7 +7,7 @@
     /*font-size: 30px;*/
     font-style: animationplay-state;
     font-family: armenian;
-    text-shadow: 1px 1px 2px white, 0 0 25px #F9CA40, 0 0 9px #FFF3AC;
+    text-shadow: 1px 1px 2px white, 0 0 25px #22D40D, 0 0 9px #DCFFDB;
     text-align: center;
     font-style: italic;
 }
@@ -88,4 +88,14 @@ p.vers {
   text-align: center; 
   text-shadow: 0 1px 1px gray;
 }
+.caption{
+  font-size: small;
+  text-align: right;
+}
 
+.bottom{
+      position: absolute;
+    left: 100px;
+    top: 90%;
+}
+/*ID de la app: ca-app-pub-4110270695525247~2718973010*/
