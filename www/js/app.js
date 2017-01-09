@@ -158,3 +158,29 @@ function toast(message) {
   $toast.appendTo($.mobile.pageContainer).delay(2000);
   $toast.fadeOut(400, removeToast);
 }
+
+/*;(function( $, window, undefined ) {
+    $.extend($.mobile, {
+        showToast: function(message,delay,callback) {
+            var oldMsg = $.mobile.loadingMessage;
+            $.mobile.loadingMessage = message;
+            $.mobile.showPageLoadingMsg();
+            if(delay && delay >0)
+            {
+                setTimeout(function(){
+                    $.mobile.hidePageLoadingMsg();
+                    $.mobile.loadingMessage = oldMsg;
+                    if(callback) callback();
+                },delay);
+            }
+            
+        }
+    });
+})( jQuery, this );
+
+
+
+
+$("#test").live("click",function(){
+    $.mobile.showToast("Lore ipsum mario pino gino prova lunga",2000,function(){alert("toast end")});
+});*/
