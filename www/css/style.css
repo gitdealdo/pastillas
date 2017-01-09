@@ -54,7 +54,7 @@ p.vers {
     opacity: 0.6;
     filter: alpha(opacity=60); /* For IE8 and earlier */
 }
-.transbox p, .transbox h2, .transbox h3 {
+.transbox p, .transbox h2, .transbox h3, .transbox li {
     margin: 5%;
     font-weight: bold;
     color: #000000;
